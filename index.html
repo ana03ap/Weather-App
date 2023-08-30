@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-app</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <header>
+
+        
+        <nav>
+
+            <div id="header-izquierda">
+                <p>Weather App</p>
+            </div>
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Offer</a></li>
+            </ul>
+        
+        </nav>
+    </header>
+
+    <main>
+        <section id="principal">
+            <div class="info-principal">
+                <h1 id="nombre-tu-ciudad">
+                    Barranquilla, Co
+                </h1>
+
+                <div class="info-adicional"><!-- aqui van dos cosas,  -->
+
+                </div>
+
+                <div class="cuadro-tipos-de-clima">
+                    
+                        <div class="tipo-de-clima">
+                            <img src="images/clouds.png" alt="">
+                            <p>Clouds</p>
+                        </div>
+
+                        <div class="tipo-de-clima">
+                            <img src="images/clear.png" alt="">
+                            <p>Clear</p>
+                        </div>
+
+                        <div class="tipo-de-clima">
+                            <img src="images/rain.png" alt="">
+                            <p>Rain</p>
+                        </div>
+
+                        <div class="tipo-de-clima">
+                            <img src="images/drizzle.png" alt="">
+                            <p>Drizzle</p>
+                        </div>
+
+                        <div class="tipo-de-clima">
+                            <img src="images/mist.png" alt="">
+                            <p>Mist</p>
+                        </div>
+
+                        <div class="tipo-de-clima">
+                            <img src="images/snow.png" alt="">
+                            <p>snow</p>
+                        </div>
+
+                </div>
+            </div>
+
+            <div class="card-principal">
+                <!-- <p id="today">Today</p>
+                <div class="weather">
+                    <img src="images/rain.png" alt="" id="weather-icon">
+                    <p class="temp-principal">°C</p>
+                </div> -->
+            </div>
+
+
+        </section>
+
+
+
+        <div class="search">
+            <div class="buscador">
+                <input type="text" placeholder="enter city name " spellcheck="false" id = "input-a-buscar">
+                <button id = "btn"><img src="images/search.png" alt=""></button>
+            </div>
+            
+        </div>
+
+        <div id="root"></div>
+
+        <!-- <div class="card">
+            <div class="weather">
+                <img src="images/rain.png" alt="" class="weather-icon">
+                <p class="temp">22°C</p>
+                <p class="cityName"> new york</p>
+            </div>
+        </div> -->
+
+
+        
+        <!-- aqui es donde van a estar las tarjetas que se vayan cargando  -->
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
