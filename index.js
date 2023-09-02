@@ -45,7 +45,10 @@ btn.addEventListener('click', ()=> {
 const input = document.getElementById('input-a-buscar')
 const btn = document.getElementById('btn')
 const apiKey = "4e7396a09cc36a7468303afa3968989c"; // Reemplaza con tu clave de API
-const cities = ["medellin", "seoul", "bogota","paris","londres",]// array de ciudades que quiero conultar de primero n
+const cities = ["medellin", "seoul", "bogota","paris","londres", "barranquilla"]// array de ciudades que quiero conultar de primero n
+const humidity =  document.getElementById("humidity-text")
+const wind =  document.getElementById("wind-text")
+const controlBarranquilla = true;// controlar que solo ingrese barranquilla una vez 
 const tempMax = "";
 const tempMin= "";
 const main = document.getElementById("root");
@@ -62,27 +65,36 @@ const getInfo = (x, apiKey) => {
         const description = data.weather[0].description;// dice la description del clima Ej "light rain"
         const tempMax = data.main.temp_max;;
         const tempMin= data.main.temp_min;;
+        const feels_like = data.main.feels_like;
+        const humedad = data.main.humidity;
+        const viento = data.wind.speed;
         console.log(data)
 
-        if(x=="barranquilla"){//es que solo voy a hacer la de barranquilla 
-            // switch(data.weather[0].description){
-            //     case "Clouds":
-            //         break;
-            //     case "Rain":
-            //         break;
-            //     case "Mist":
-            //         break;
-            // }
-            // sw=1
+        if(x=="barranquilla"){//para que esta carta se cree arriba en la principal 
             console.log("hola")
-            barranquilla.innerHTML += `
+            // verifying temprature max vs min. if it is equal, just show feels like
+            humidity.innerText =  `Humidity ${humedad}%`;
+            wind.innerText =  `Wind  ${viento}%`;
+
+            if(tempMax==tempMin){
+                barranquilla.innerHTML += `
+                <div class="weather">
+                        <img src="images/nuevas/sunny foggy.png" alt="" id="weather-icon">
+                        <p id="temp">${Math.ceil(parseInt(temperature))} °C</p>
+                        <p id="feelslike"> feels like ${feels_like }</p>
+                </div> 
+                `
+            }else{
+                barranquilla.innerHTML += `
             <div class="weather">
                     <img src="images/nuevas/sunny foggy.png" alt="" id="weather-icon">
-                    <p id="description">${description}</p>
+                    <p id="temp">${Math.ceil(parseInt(temperature))} °C</p>
                     <p id="temp">${Math.ceil(parseInt(temperature))} °C</p>
                     <p id="temp-min-max">${tempMin} - ${tempMax }</p>
             </div> 
             `
+            }
+            
         }else{
             main.innerHTML += `
         
@@ -104,7 +116,7 @@ const getInfo = (x, apiKey) => {
     });
 };
 
-getInfo ("barranquilla", apiKey)
+
 cities.forEach(element => {
     getInfo(element,apiKey);
 });
@@ -125,5 +137,36 @@ btn.addEventListener('click',()=>{// cuando se oprime el boton de buscar
 
 })
 
+
+// funcion para la hora en el frame principal 
+
+function getDayandHour(){
+    // Obtener la fecha y hora actual
+    const fechaActual = new Date();
+
+    // Obtener el día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+    const diaSemana = fechaActual.getDay();
+
+    // Obtener el número del día del mes
+    const diaMes = fechaActual.getDate();
+
+    // Obtener el mes (0 = Enero, 1 = Febrero, ..., 11 = Diciembre)
+    const mes = fechaActual.getMonth();
+
+    // Obtener el año
+    const año = fechaActual.getFullYear();
+
+    // Días de la semana en formato de texto
+    const diasSemanaTexto = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+    // Meses en formato de texto
+    const mesesTexto = [
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    console.log(`Hoy es ${diasSemanaTexto[diaSemana]}, ${diaMes} de ${mesesTexto[mes]} de ${año}`);
+
+}
 
 

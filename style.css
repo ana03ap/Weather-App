@@ -12,6 +12,7 @@ body{
 }
 
 header{
+    width: 100%;
     background-color: black;
     display: flex;
     align-items: center;
@@ -28,12 +29,16 @@ nav{
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     color: white;
 
 }
 
 #menu{
-    width: 10pc;
+    width: 20pc;
+}
+#menu ul {
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,29 +47,45 @@ nav{
     list-style: none;
 }
 
+
+#menu ul li {
+    display: flex;
+    gap: 2pc;
+}
+#menu ul li a {
+    
+    color: white;
+    text-decoration: none;
+    list-style: none;
+}
+
 /* SECTION PRINCIPAL- primer cuadro grande   */
 #principal{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     /* margin: 100px auto 0; */
     margin: 4pc;
     height: 30pc;
     padding: 2pc 8pc;
-    border-radius: 3rem;    
-    background-image: url('images/aurora-boreal.jpg'); /* Reemplaza 'ruta-de-la-imagen.jpg' con la ruta de tu imagen */
+    border-radius: 3rem;  
+    background-image: url('https://www.usnews.com/dims4/USNEWS/5fa667a/2147483647/thumbnail/970x647/quality/85/?url=http://media.beam.usnews.com/dd/3f/5db273244a19916454cfe158a0d2/1-intro-stock.jpg  ');
+    /* background-image: url('images/aurora-boreal.jpg');  */
+    /* Reemplaza 'ruta-de-la-imagen.jpg' con la ruta de tu imagen */
     background-size: cover; /* Ajusta la imagen para cubrir todo el div */
     background-position: center; /* Centra la imagen dentro del div */
 }
 
 .card-principal{
-    width: 50%;
+    width: 70%;
     max-width: 300px;
     /* background-color: #5b548a; */
-    background-image: linear-gradient(135deg, #168b64, #33538d); 
+    background-image: linear-gradient(135deg, #167c5a, #6c459e); 
+    /*167c5a, #33538d*/
+    
     color: white;
     border-radius: 20px;
-    padding: 40px 35px;
+    padding: 35px 30px;
     text-align: center;
 }
 
@@ -105,7 +126,7 @@ nav{
 }
 
 .buscador button{
-    border:1px solid black;
+    border:2px solid black;
     background-color: #ebfffc;
     border-radius: 50%;
     width: 60px;
@@ -123,6 +144,14 @@ nav{
     font-size: 50px;
 }
 
+.date-info{
+    display: flex;
+    color: white;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
 
 .info-principal{
     display: flex;
@@ -133,19 +162,27 @@ nav{
 .tipo-de-clima{
     display: flex;
     align-items: center;
+    gap:1pc;
 }
 .tipo-de-clima img{
     width: 30px;
-    height: 30px;;
+    height: 30px;
+    background-color: #168b64;
+    padding: 5px;
 }
 
-/* CUADRO PEQUEÑO EXPLICANDO CADA CLIMA  */
+#humidity-text, #wind-text{
+    color: #333;
+}
+
+/* CUADRO PEQUEÑO EXPLICANDO ESPECIFICACIONES DE HUMEDAD Y WIND */
 .cuadro-tipos-de-clima{
     background-color: rgba(255, 243, 228, 0.849);
     border-radius: 3rem;
-    padding: 1pc;
+    padding: 1pc 0.5pc;
     display: grid;
     grid-template-columns:  repeat(2,1fr);
+    row-gap: 15px; /* Espacio entre las filas */
     place-items: center;
 }
 
@@ -154,20 +191,18 @@ nav{
 #root{
     display: grid;
     grid-template-columns: repeat(5,1fr);
-    /* font-family: 'Courier New', Courier, monospace;
-    color:white; */
     border: 2px solid black;
-    margin: 100px;
+    margin: 80px;
     padding: 50px;
-    gap: 50px; /* Espacio entre las celdas */
-    align-items: center; /* Centrar verticalmente el contenido de las celdas */
-    justify-items: center; /* Centrar horizontalmente el contenido de las celdas */
+    gap: 50px; 
+    align-items: center; 
+    justify-items: center; 
 
 }
 
 
 
-/* cartas creadas en js */
+/* CARD CREATED IN JS*/
 
 .card{
     width: 100%;
@@ -178,11 +213,50 @@ nav{
     padding: 40px 35px;
     text-align: center;
     border-radius: 0.5rem;
+    box-shadow: 3px 3px 5px black;
+    
+}
+
+.card:hover{
+    background-color: #167c5a;
+    transform: scale(1.05);
     
 }
 
 .card h1{
-    font-size: 10px;
+    font-size: 30px;
 }
 
     
+
+
+
+
+/* responsive */
+@media screen and (max-width: 390px) {
+    #root {
+        grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas */
+    }
+    #principal{
+        flex-direction: column;
+    }
+
+    #nombre-tu-ciudad{
+        font-size: 20px;
+    }
+
+    .cuadro-tipos-de-clima{
+        display: none;
+    }
+    .card-principal{
+        height: 15pc;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .weather img{
+        height: 50px;
+        width: 50px;
+    }
+}
