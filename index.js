@@ -7,7 +7,11 @@ const wind =  document.getElementById("wind-text")
 const main = document.getElementById("root");
 const barranquilla= document.querySelector(".card-principal");// para traer la tarjeta de barranquilla 
 const deleteBtn = document.querySelector(".btn-delete");// si se oprime se borra la card que estaba siendo señalada 
-// const deleteBtn_ciudad = document.querySelector("#${data.name}")
+
+const box = document.querySelector('.popUp');// boton pal pop up que parece cuando escribirste algo mal
+const buttonClose = document.getElementById('btnClose');
+
+
 // funcion que hace el fetch
 const getInfo = (x, apiKey) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${x}&appid=${apiKey}&units=metric`;// en unit metrics me aseguro que la temperatura este en celsius
@@ -16,7 +20,6 @@ const getInfo = (x, apiKey) => {
         .then((response) => response.json())// devolver un json si hay respuesta
         .then((data) => {// data se llama el json que nos traemos 
         const temperature = data.main.temp;// aqui me traigo la temperatura
-        const description = data.weather[0].description;// dice la description del clima Ej "light rain"
         const tempMax = data.main.temp_max;;
         const tempMin= data.main.temp_min;;
         const feels_like = data.main.feels_like;
@@ -117,7 +120,7 @@ btn.addEventListener('click',()=>{// cuando se oprime el boton de buscar
     // validando si la ciudad ya esta
     console.log(cities)
     if (cities.includes(busqueda)) {
-        alert("ya esta ciudad esta en el arreglo");// si ya está no pasa nada
+        box.classList.toggle('popUpOn')
         // agregar aqui un alert o alguna vaina
     } else {
         cities.push(busqueda )
@@ -146,23 +149,17 @@ function eliminarElementoFromArray(arr, elementoAEliminar) {
 
 // funcion para la hora en el frame principal 
 function getDayandHour(){
-    const fechaActual = new Date();
-    // Obtener el día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
-    const diaSemana = fechaActual.getDay();
-    // Obtener el número del día del mes
-    const diaMes = fechaActual.getDate();
-    // Obtener el mes (0 = Enero, 1 = Febrero, ..., 11 = Diciembre)
-    const mes = fechaActual.getMonth();
-    // Obtener el año
-    const año = fechaActual.getFullYear();
-    // Días de la semana en formato de texto
-    const diasSemanaTexto = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-    // Meses en formato de texto
+    const fechaActual = new Date();// Obtener el día de la semana (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+    const diaSemana = fechaActual.getDay();// Obtener el número del día del mes
+    const diaMes = fechaActual.getDate();// Obtener el mes (0 = Enero, 1 = Febrero, ..., 11 = Diciembre)
+    const mes = fechaActual.getMonth();// Obtener el año
+    const año = fechaActual.getFullYear();// Días de la semana en formato de texto
+    const diasSemanaTexto = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];// Meses en formato de texto
     const mesesTexto = [
     "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
-    // ${diasSemanaTexto[diaSemana]},
+
     document.getElementById("fecha").innerText = `${mesesTexto[mes]} ${diaMes} `;
 
 }
@@ -193,3 +190,8 @@ function updateTime(k){
     }
 }
 currentTime();
+
+
+buttonClose.addEventListener('click', () => {
+    box.classList.toggle('popUpOn')
+})

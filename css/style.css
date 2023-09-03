@@ -59,6 +59,53 @@ nav{
     list-style: none;
 }
 
+
+
+/* POP UP  */
+.popUp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 243, 228, 0.849);
+    border:2px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    z-index: 1;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+
+.popUpOn {
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    visibility: visible;
+}
+
+.imagePop {
+    width: 250px;
+    height: 250px;
+}
+
+#btnClose {
+    cursor: pointer;
+    width: 5pc;
+    height: 2pc;
+    border: none;
+    border-radius: 20px;
+    font-size: 24px;
+}
+
+#btnClose:hover {
+    background-color:#6c459e ;
+    
+}
+
+
+
 /* SECTION PRINCIPAL- primer cuadro grande   */
 
 #nombre-tu-ciudad{
@@ -95,10 +142,6 @@ nav{
     width: 200px;
     height: 100px;
 }
-#today{
-    border-radius: 3rem;
-    border:1px solid black;
-}
 
 .buscador{
     width: 50%;
@@ -116,7 +159,7 @@ nav{
 .buscador input {
     
     border:2px solid black;
-    background-color: #ebfffc;
+    background-color: rgba(255, 243, 228, 0.849);
     color:#555;
     padding:10px 25px;
     height: 60px;
@@ -129,7 +172,7 @@ nav{
 
 .buscador button{
     border:2px solid black;
-    background-color: #ebfffc;
+    background-color: rgba(255, 243, 228, 0.849);
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -194,7 +237,7 @@ nav{
 #root{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    border: 2px solid black;
+    border-radius: 0.3rem;
     margin: 80px;
     padding: 50px;
     gap: 50px; 
