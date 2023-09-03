@@ -31,11 +31,13 @@ nav{
     align-items: center;
     justify-content: space-around;
     color: white;
+    font-size: 2pc;
+    font-weight: bolder;
 
 }
 
 #menu{
-    width: 20pc;
+    width: 25pc;
 }
 #menu ul {
     
@@ -138,50 +140,11 @@ nav{
     text-align: center;
 }
 
-#weather-icon{
-    width: 200px;
+.weather-icon{
+    width: 150px;
     height: 100px;
 }
 
-.buscador{
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.search{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.buscador input {
-    
-    border:2px solid black;
-    background-color: rgba(255, 243, 228, 0.849);
-    color:#555;
-    padding:10px 25px;
-    height: 60px;
-    border-radius: 30px;
-    flex:1;
-    margin-right: 16px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.buscador button{
-    border:2px solid black;
-    background-color: rgba(255, 243, 228, 0.849);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-
-}
-.buscador button img{
-    width: 16px;
-}
 
 /* barranquilla  */
 #nombre-tu-ciudad{
@@ -221,6 +184,52 @@ nav{
     color: #333;
 }
 
+
+
+/* SECTION BUSCADOR   */
+
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buscador{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.buscador input {
+    border:2px solid black;
+    background-color: rgba(255, 243, 228, 0.849);
+    color:#555;
+    padding:10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    flex:1;
+    margin-right: 16px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.buscador button{
+    border:2px solid black;
+    background-color: rgba(255, 243, 228, 0.849);
+    border-radius: 50%;
+    width: 70px;
+    height: 60px;
+    cursor: pointer;
+
+}
+.buscador button img{
+    width: 16px;
+}
+
+
+
 /* CUADRO PEQUEÑO EXPLICANDO ESPECIFICACIONES DE HUMEDAD Y WIND */
 .cuadro-tipos-de-clima{
     background-color: rgba(255, 243, 228, 0.849);
@@ -233,7 +242,7 @@ nav{
 }
 
 
-/* poner root en display grid  */
+/* Div donde van todas las cartas  */
 #root{
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -341,13 +350,20 @@ nav{
 }
 
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 760px) {
     #menu{
         display: none;
     }
 
     .weather #feelslike{
         display: none;
+    }
+
+
+    .card-principal{
+        width: 60%;
+        padding: 25px 20px;
+
     }
 }
 
@@ -378,11 +394,14 @@ nav{
         display: flex;
         justify-content: center;
     } 
-    .buscador{
-        flex-direction: column;
-        gap: 20px;
-    }
+    
 }
 
+@media screen and (max-width: 535px) {
+.buscador input{
+        width: 50%;
+    }
+
+}
 
 

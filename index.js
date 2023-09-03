@@ -52,6 +52,9 @@ const getInfo = (x, apiKey) => {
             case'Rain':
                 imageSrc = 'images/nuevas/thunder.png'
                 break;
+            case'Fog':
+            imageSrc = 'images/nuevas/windy.png'
+            break;
         }
 
 
@@ -64,7 +67,7 @@ const getInfo = (x, apiKey) => {
             if(tempMax==tempMin){
                 barranquilla.innerHTML += `
                 <div class="weather">
-                        <img src="images/nuevas/sunny foggy.png" alt="" id="weather-icon">
+                        <img src="images/nuevas/sunny foggy 2.png" alt="" class="weather-icon">
                         <p id="temp">${Math.ceil(parseInt(temperature))} °C</p>
                         <p id="feelslike"> Feels like  ${feels_like }</p>
                 </div> 
@@ -72,7 +75,7 @@ const getInfo = (x, apiKey) => {
             }else{
                 barranquilla.innerHTML += `
             <div class="weather">
-                    <img src="images/nuevas/sunny foggy.png" alt="" id="weather-icon">
+                    <img src="images/nuevas/sunny foggy 2.png" alt="" id="weather-icon">
                     <p id="temp">${Math.ceil(parseInt(temperature))} °C</p>
                     <p id="temp-min-max">${tempMin} - ${tempMax }</p>
             </div> 
@@ -85,10 +88,10 @@ const getInfo = (x, apiKey) => {
                 <div class="card">
                 
                     <box-icon name='x' color='#ffffff' class ="btn-delete" id="${data.name}"></box-icon>
-                    <h1 id="name">${data.name}, ${data.sys.country} </h1>
+                    <h1 class="name">${data.name}, ${data.sys.country} </h1>
                     <div class="card2">
-                        <img src='${imageSrc}' alt="" id="weather-icon">
-                        <p id="temp">${Math.ceil(parseInt(temperature))} °C</p>
+                        <img src='${imageSrc}' alt="" class="weather-icon">
+                        <p class="temp">${Math.ceil(parseInt(temperature))} °C</p>
                     </div> 
 
                     
