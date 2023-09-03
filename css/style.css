@@ -60,6 +60,10 @@ nav{
 }
 
 /* SECTION PRINCIPAL- primer cuadro grande   */
+
+#nombre-tu-ciudad{
+    font-weight: bold;
+}
 #principal{
     display: flex;
     justify-content: space-between;
@@ -78,7 +82,7 @@ nav{
 
 .card-principal{
     width: 70%;
-    max-width: 300px;
+    max-width: 250px;
     /* background-color: #5b548a; */
     background-image: linear-gradient(135deg, #167c5a, #6c459e); 
     /*167c5a, #33538d*/
@@ -90,8 +94,8 @@ nav{
 }
 
 #weather-icon{
-    width: 250px;
-    height: 150px;
+    width: 200px;
+    height: 100px;
 }
 #today{
     border-radius: 3rem;
@@ -149,6 +153,7 @@ nav{
     color: white;
     align-items: center;
     width: 100%;
+    font-size: 20px;
     justify-content: space-around;
 }
 
@@ -190,7 +195,7 @@ nav{
 /* poner root en display grid  */
 #root{
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(3,1fr);
     border: 2px solid black;
     margin: 80px;
     padding: 50px;
@@ -206,7 +211,7 @@ nav{
 
 .card{
     width: 100%;
-    max-width: 200px;
+    max-width: 350px;
     background-color: #5b548a;
     color: white;
     border-radius: 20px;
@@ -214,37 +219,97 @@ nav{
     text-align: center;
     border-radius: 0.5rem;
     box-shadow: 3px 3px 5px black;
+    position: relative;
+    /* para luego poner un position absolute */
     
 }
 
-.card:hover{
+.card2{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 10px;
+    align-items: center;
+}
+
+.card2 p{
+    font-weight: bold;
+    font-size: 2pc;
+}
+.btn-delete{
+    display: none;
+    /* opacity: 0; */
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* padding: 10px 20px; */
+    /* background-color: #007bff; */
+    
+    cursor: pointer;
+}
+
+.card:hover {
+    
     background-color: #167c5a;
     transform: scale(1.05);
     
+}
+
+.card:hover .btn-delete {
+    display:block ;
+    /* opacity: 1; */
 }
 
 .card h1{
     font-size: 30px;
 }
 
-    
 
 
 
 
 /* responsive */
-@media screen and (max-width: 390px) {
+
+@media screen and (max-width: 1303px) {
     #root {
         grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas */
     }
+    .card{
+        max-width: 250px;  
+    }
+
+    .card2{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 822px) {
+
+    #menu{
+        display: none;
+    }
+
+    .weather #feelslike{
+        display: none;
+    }
+    #root {
+        grid-template-columns: repeat(1, 1fr); /* Cambiar a 2 columnas */
+        place-content: center;
+    }
     #principal{
+        flex-direction: column;
+    }
+
+    .date-info{
+        display: flex;
         flex-direction: column;
     }
 
     #nombre-tu-ciudad{
         font-size: 20px;
     }
-
     .cuadro-tipos-de-clima{
         display: none;
     }
@@ -253,10 +318,12 @@ nav{
         width: 200px;
         display: flex;
         justify-content: center;
-    }
-
-    .weather img{
-        height: 50px;
-        width: 50px;
+    } 
+    .buscador{
+        flex-direction: column;
+        gap: 20px;
     }
 }
+
+
+
